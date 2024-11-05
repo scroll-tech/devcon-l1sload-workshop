@@ -1,24 +1,31 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-import {Test, console} from "forge-std/Test.sol";
-import {Counter} from "../src/Counter.sol";
+import {Test} from "forge-std/Test.sol";
 
-contract CounterTest is Test {
+import {TestWithL1SLOAD} from "../src/l1sload/MockL1SLOAD.sol";
+import {Counter, CounterReader} from "../src/Counter.sol";
+
+contract CounterTest is Test, TestWithL1SLOAD {
     Counter public counter;
 
-    function setUp() public {
+    function setUp() public virtual override {
+        super.setUp();
+
+        // simulate L1 contract deployment
         counter = new Counter();
-        counter.setNumber(0);
     }
 
-    function test_Increment() public {
+    function testReadCounter() public {
+        // simulate L2 contract deployment
+        CounterReader reader = new CounterReader(address(counter));
+
+        uint256 val0 = reader.readCounter();
+        assertEq(val0, 0);
+
         counter.increment();
-        assertEq(counter.number(), 1);
-    }
 
-    function testFuzz_SetNumber(uint256 x) public {
-        counter.setNumber(x);
-        assertEq(counter.number(), x);
+        val0 = reader.readCounter();
+        assertEq(val0, 1);
     }
 }
