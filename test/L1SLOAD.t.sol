@@ -31,6 +31,8 @@ contract L1SLOADTest is Test, TestWithL1SLOAD {
     }
 
     function test_readUint256_2(bytes32 slot0, uint256 val0, bytes32 slot1, uint256 val1) public {
+        vm.assume(slot0 != slot1);
+
         st.write(slot0, bytes32(val0));
         st.write(slot1, bytes32(val1));
 
