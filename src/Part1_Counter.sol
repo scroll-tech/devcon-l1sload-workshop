@@ -28,6 +28,8 @@ contract CounterReader {
     /// @notice Reads `number` and `map[123]` from L1 using L1SLOAD
     /// @dev This function reads values from L1
     function readCounter() external view returns (uint256, uint256) {
-        // TODO: complete this function
+        bytes32 mappingSlot = keccak256(abi.encode( /* mapping key: */ 123, /* mapping slot: */ 1));
+        (uint256 val0, uint256 val1) = L1SLOAD.readUint256(counter, bytes32(uint256(0)), mappingSlot);
+        return (val0, val1);
     }
 }
