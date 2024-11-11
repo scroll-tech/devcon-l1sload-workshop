@@ -1,66 +1,16 @@
-## Foundry
+## L1SLOAD Workshop
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+**L1SLOAD is a precompile that allows your L2 dapp to use L1 (Ethereum) data**
 
-Foundry consists of:
+What L1SLOAD unlocks:
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- Write normal Solidity code to get direct read access to L1 state from your L2 contract.
+- Developer-friendly building block for better L1/L2 interoperability.
 
 ## Documentation
 
-https://book.getfoundry.sh/
+This repository contains the resources which are covered in Devcon's L1SLOAD Workshop:
 
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+**Part 1**: Includes simple examples to get started, and L1SLOAD codebase for configuring a local test environment in Foundry.
+**Part 2**: Explore various examples demonstrating how to interact with different data types and structures in Solidity.
+**Part 3**: Dive into a real-world use case by exploring [Keystore](https://scroll.io/blog/towards-the-wallet-endgame-with-keystore).
