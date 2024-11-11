@@ -60,6 +60,8 @@ contract L2Wallet is Wallet {
     /// @inheritdoc Wallet
     /// @dev This function reads the signer value from L1
     function isAuthorized(address signer) public view override returns (bool) {
-        // TODO: complete this function
+        bytes32 mappingSlot = keccak256(abi.encode( /* mapping key: */ signer, /* mapping slot: */ 0));
+        bool authorized = L1SLOAD.readBool(l1Wallet, mappingSlot);
+        return authorized;
     }
 }
