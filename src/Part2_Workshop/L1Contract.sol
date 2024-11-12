@@ -8,7 +8,7 @@ contract L1Contract {
 
     // uint256
     uint256 l1Number; //storage slot 0
-    // bytes 
+    // bytes
     string l1Text; //storage slot 1
     // string
     bytes32 l1Bytes; //storage slot 2
