@@ -8,8 +8,9 @@ contract L1Contract {
 
     // uint256
     uint256 l1Number; //storage slot 0
-    // bytes or string
+    // bytes 
     string l1Text; //storage slot 1
+    // string
     bytes32 l1Bytes; //storage slot 2
     // fixed or dynamic array
     uint256[3] public l1FixedArray;
